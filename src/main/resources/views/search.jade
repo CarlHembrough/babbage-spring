@@ -1,0 +1,18 @@
+extends ./base.jade
+
+block page
+    #searchBar.search.search--results-page.print--hide
+        .wrapper
+            form(action="/search").col-wrap.search__form
+                h1 Search our website
+                label(for="nav-search").font-size--16.block Keyword(s) or time series ID
+                input(type="search", autocomplete="off", name="q", value="#{query}")#nav-search.search__input.search__input--results-page.col.col--md-29.col--lg-29
+                button(type="submit")#nav-search-submit.search__button.search__button--results-page.col--md-3.col--lg-3
+                    span.visuallyhidden Search
+                    span.icon.icon-search--light
+
+    p Number of search results: #{search.result.numberOfResults}
+
+    each item in search.result.results
+        p !{item.description.title}
+
